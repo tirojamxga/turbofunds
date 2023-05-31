@@ -1,82 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login Portal</title>
   <style>
     body {
-      background-color: black;
-      color: white;
       font-family: Arial, sans-serif;
+      text-align: center;
     }
     
     .container {
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 20px;
-      text-align: center;
-      background-color: white;
-      border-radius: 5px;
       margin-top: 100px;
     }
     
-    .form-group {
-      margin-bottom: 20px;
-    }
-    
-    .form-group label {
-      display: block;
-      text-align: left;
-      color: black;
-    }
-    
-    .form-group input {
-      width: 100%;
+    input[type=text], input[type=password] {
       padding: 10px;
-      border: 1px solid black;
-      border-radius: 5px;
+      margin: 5px;
+      width: 200px;
     }
     
-    .form-group input[type="submit"] {
-      background-color: black;
-      color: white;
-      cursor: pointer;
+    button {
+      padding: 10px;
+      width: 100px;
     }
     
-    .form-group input[type="submit"]:hover {
-      background-color: white;
-      color: black;
+    #result {
+      margin-top: 50px;
+      font-weight: bold;
+    }
+    
+    #logo {
+      width: 5%;
+      height: auto;
     }
   </style>
-  <script>
-    function validateForm() {
-      var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
-      
-      if (username === "tirojamxga" && password === "October52002_") {
-        window.location.href = "https://sites.google.com/view/turbofunds/admin";
-      } else {
-        alert("Invalid username or password");
-        return false;
-      }
-    }
-  </script>
 </head>
 <body>
   <div class="container">
-    <h2>Login</h2>
-    <form onsubmit="return validateForm()">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Enter your username">
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password">
-      </div>
-      <div class="form-group">
-        <input type="submit" value="Login">
-      </div>
-    </form>
+    <img id="logo" src="https://lh3.googleusercontent.com/i8examl9xggfE6J-NV-WTAIgXL8QuIzrQnkTs6Ag9kjNdatT--knjIM5aXntVw57oq2ARuTLijOBRgRaKzzYpZY" alt="Logo">
+    <h2>Login to TurboFunds</h2>
+    <input type="text" id="username" placeholder="Username" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button onclick="login()">Login</button>
+    <p id="result"></p>
   </div>
+
+  <script>
+    var link;
+    
+    function login() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      var resultElement = document.getElementById('result');
+
+      if (username === 'client0815' && password === '08152001') {
+        var currentDate = new Date();
+        var currentHour = currentDate.getHours();
+        var greeting;
+
+        if (currentHour < 12) {
+          greeting = 'Good morning';
+        } else if (currentHour < 18) {
+          greeting = 'Good afternoon';
+        } else {
+          greeting = 'Good evening';
+        }
+
+        link = 'https://sites.google.com/view/turbofunds/dareen-tiro';
+
+        resultElement.textContent = greeting + '! You have successfully logged in.';
+
+        // Open the link in the same tab
+        window.location.href = link;
+      } else if (username === 'tirojamxga' && password === 'October52002_') {
+        link = 'https://sites.google.com/view/turbofunds/admin';
+        
+        resultElement.textContent = 'Welcome! You have successfully logged in.';
+        
+        // Open the link in the same tab
+        window.location.href = link;
+      } else {
+        resultElement.textContent = 'Invalid username or password.';
+      }
+    }
+  </script>
 </body>
 </html>
